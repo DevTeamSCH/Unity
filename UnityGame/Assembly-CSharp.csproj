@@ -62,8 +62,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Models\Characters\Jelly Fish Loli\Scripts\ChaScript.cs" />
+    <Compile Include="Assets\Models\Characters\Jelly Fish Loli\Scripts\Move.cs" />
+    <Compile Include="Assets\Scripts\GunControl.cs" />
     <Compile Include="Assets\Scripts\JeremyController.cs" />
+    <Compile Include="Assets\Scripts\PatrolControl.cs" />
     <None Include="Assets\Models\Characters\Jeremy\Docs\MaleCharacterAnimation.txt" />
+    <None Include="Assets\Models\Characters\Jelly Fish Loli\ReadMe.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/szucs/Documents/GitHub/Unity/UnityGame/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
