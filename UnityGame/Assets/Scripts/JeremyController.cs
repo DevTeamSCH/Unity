@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class JeremyController : MonoBehaviour
 {
+    private WalkState _walkState;
     // Start is called before the first frame update
     public bool isTouchingGround;
     private float speed;
@@ -11,6 +12,17 @@ public class JeremyController : MonoBehaviour
     private float runSpeed = 0.1f;
     private float turnSpeed = 1.5f;
     private float jumpHeight=5f;
+    
+    public WalkState WalkState{
+        get { return _walkState; }
+        set {
+            _walkState = value;
+            animator.SetBool("isWalking", value == WalkState.Walking);
+            animator.SetBool("isRunning", value == WalkState.Running);
+            animator.SetBool("isIdle", value == WalkState.Idle);
+        }
+    }
+    
     Rigidbody rbody;
     Animator animator;
     CapsuleCollider capsuleCollider;
@@ -20,9 +32,7 @@ public class JeremyController : MonoBehaviour
         animator = GetComponent<Animator>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         isTouchingGround = true;
-        animator.SetBool("isWalking", false);
-        animator.SetBool("isRunning", false);
-        animator.SetBool("isIdle", true);
+        WalkState=WalkState.Idle;
     }
 
     // Update is called once per frame
@@ -30,6 +40,7 @@ public class JeremyController : MonoBehaviour
     {
         var z = Input.GetAxis("Vertical") * speed;
         var y = Input.GetAxis("Horizontal") * turnSpeed;
+        //TODO: replace with Rigidbody.AddForce/AddTorque()
         transform.Translate(0, 0, z);
         transform.Rotate(0, y, 0);
         if (Input.GetKey(KeyCode.Space) && isTouchingGround)
@@ -43,49 +54,28 @@ public class JeremyController : MonoBehaviour
         else if (Input.GetKey(KeyCode.LeftShift))
         {
             speed = runSpeed;
-            //TODO: W & S can be merged?
-            if (Input.GetKey(KeyCode.W))
+            //TODO: replace with Input.GetAxis()
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
             {
-                Debug.Log("W");
-                animator.SetBool("isWalking", false);
-                animator.SetBool("isRunning", true);
-                animator.SetBool("isIdle", false);
-            }
-            else if (Input.GetKey(KeyCode.S))
-            {
-                animator.SetBool("isWalking", false);
-                animator.SetBool("isRunning", true);
-                animator.SetBool("isIdle", false);
+                WalkState=WalkState.Running;
             }
             else
             {
-                animator.SetBool("isWalking", false);
-                animator.SetBool("isRunning", false);
-                animator.SetBool("isIdle", true);
+                WalkState=WalkState.Idle;
             }
         }
         else
         {
             speed = walkSpeed;
-            //TODO: W & S can be merged?
-            if (Input.GetKey(KeyCode.W))
+            //TODO: replace with Input.GetAxis()
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
             {
                 Debug.Log("W");
-                animator.SetBool("isWalking", true);
-                animator.SetBool("isRunning", false);
-                animator.SetBool("isIdle", false);
-            }
-            else if (Input.GetKey(KeyCode.S))
-            {
-                animator.SetBool("isWalking", true);
-                animator.SetBool("isRunning", false);
-                animator.SetBool("isIdle", false);
+                WalkState=WalkState.Walking;
             }
             else
             {
-                animator.SetBool("isWalking", false);
-                animator.SetBool("isRunning", false);
-                animator.SetBool("isIdle", true);
+                WalkState=WalkState.Idle;
             }
         }
 
