@@ -38,10 +38,8 @@ public class JeremyController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        var z = Input.GetAxis("Vertical") * speed;
+        var input = Input.GetAxis("Vertical");
         var y = Input.GetAxis("Horizontal") * turnSpeed;
-        //TODO: replace with Rigidbody.AddForce/AddTorque()
-        transform.Translate(0, 0, z);
         transform.Rotate(0, y, 0);
         if (Input.GetKey(KeyCode.Space) && isTouchingGround)
         {
@@ -51,32 +49,22 @@ public class JeremyController : MonoBehaviour
             animator.SetBool("isTouchingGround", false);
             Debug.Log(isTouchingGround);
         }
-        else if (Input.GetKey(KeyCode.LeftShift))
+        else if (input != 0)
         {
-            speed = runSpeed;
-            //TODO: replace with Input.GetAxis()
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
+            if (Input.GetKey(KeyCode.LeftShift))
             {
                 WalkState=WalkState.Running;
+                transform.Translate(0, 0, input*runSpeed);
             }
             else
             {
-                WalkState=WalkState.Idle;
+                WalkState=WalkState.Walking;
+                transform.Translate(0, 0, input*walkSpeed);
             }
         }
         else
         {
-            speed = walkSpeed;
-            //TODO: replace with Input.GetAxis()
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
-            {
-                Debug.Log("W");
-                WalkState=WalkState.Walking;
-            }
-            else
-            {
-                WalkState=WalkState.Idle;
-            }
+            WalkState=WalkState.Idle;
         }
 
     }
