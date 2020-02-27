@@ -1,0 +1,4 @@
+UnityGame/Library/metadata/**
+UnityGame/Library/*Cache/**
+**/*.log
+UnityGame/Temp/**
