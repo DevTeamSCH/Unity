@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     private Transform target;
     public GameObject ImpactEffect;
     public float bulletSpeed = 50f;
+    public int damage = 10;
 
     void Start()
     {
@@ -37,6 +38,7 @@ public class Bullet : MonoBehaviour
     {
         GameObject effectInstance=Instantiate(ImpactEffect, transform.position, transform.rotation);
         Destroy(effectInstance, 1f);
+        target.GetComponent<HealthController>().TakeDamage(damage);
         Destroy(gameObject);
 
     }
