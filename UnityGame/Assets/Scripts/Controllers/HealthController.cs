@@ -14,7 +14,11 @@ public class HealthController : MonoBehaviour
     }
     public void TakeDamage(int amount)
     {
-        if (amount > health) health = 0;
+        if (amount > health)
+        {
+            health = 0;
+            Die();
+        }
         else health -= amount;
         healthBar.SetPercent((float)health / maxHealth);
     }
@@ -23,6 +27,11 @@ public class HealthController : MonoBehaviour
         if (health + amount > maxHealth) health = maxHealth;
         else health += amount;
         healthBar.SetPercent(health / maxHealth);
+    }
+
+    public void Die()
+    {
+        Destroy(gameObject);
     }
     // Update is called once per frame
     void Update()
