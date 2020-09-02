@@ -18,8 +18,7 @@ public class JeremyController : MonoBehaviour
     private bool isGrounded;
 
 
-    //TODO change to state machine
-    bool fps = true;
+    public CameraControl cameraControl;
 
     private float walkSpeed = 0.05f;
     private float runSpeed = 0.1f;
@@ -43,7 +42,11 @@ public class JeremyController : MonoBehaviour
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundIndicator.position, groundDistance, groundMask);
-        if (isGrounded && velocity.y < 0) velocity.y = -2;
+        if (isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2;
+            animator.SetBool("isJumping", false);
+        }
         var horizontal = Input.GetAxis("Horizontal");
         var vertical = Input.GetAxis("Vertical");
         var direction = new Vector3(horizontal, 0, vertical).normalized;
@@ -52,8 +55,9 @@ public class JeremyController : MonoBehaviour
 
         if (direction.magnitude >= 0.1)
         {
+            animator.SetBool("isWalking", true);
 
-            if (fps)
+            if (cameraControl.cameraState==CameraState.FPS)
             {
                 moveDirection = transform.right * horizontal + transform.forward * vertical;
             }
@@ -66,75 +70,18 @@ public class JeremyController : MonoBehaviour
             }
             characterController.Move(moveDirection.normalized * speed * Time.deltaTime);
         }
-        if (Input.GetButtonDown("Jump") && isGrounded) velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        else animator.SetBool("isWalking", false);
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            animator.SetBool("isJumping", true);
+        }
         velocity.y += gravity * Time.deltaTime;
         characterController.Move(velocity * Time.deltaTime);
 
-        /*transform.Translate(0, 0, horizontal);
-        transform.Rotate(0, vertical, 0);
-        if (Input.GetKey(KeyCode.Space) && IsTouchingGround)
-        {
-            Debug.Log("Jumpy jump!");
-            rbody.AddForce(transform.up*jumpHeight,ForceMode.Impulse);
-            IsTouchingGround = false;
-            Debug.Log(IsTouchingGround);
-        }
-        else if (Input.GetKey(KeyCode.LeftShift))
-        {
-            speed = runSpeed;
-            //TODO: W & S can be merged?
-            if (Input.GetKey(KeyCode.W))
-            {
-                Debug.Log("W");
-                animator.SetBool("isWalking", false);
-                animator.SetBool("isRunning", true);
-                animator.SetBool("isIdle", false);
-            }
-            else if (Input.GetKey(KeyCode.S))
-            {
-                animator.SetBool("isWalking", false);
-                animator.SetBool("isRunning", true);
-                animator.SetBool("isIdle", false);
-            }
-            else
-            {
-                animator.SetBool("isWalking", false);
-                animator.SetBool("isRunning", false);
-                animator.SetBool("isIdle", true);
-            }
-        }
-        else
-        {
-            speed = walkSpeed;
-            //TODO: W & S can be merged?
-            if (Input.GetKey(KeyCode.W))
-            {
-                Debug.Log("W");
-                animator.SetBool("isWalking", true);
-                animator.SetBool("isRunning", false);
-                animator.SetBool("isIdle", false);
-            }
-            else if (Input.GetKey(KeyCode.S))
-            {
-                animator.SetBool("isWalking", true);
-                animator.SetBool("isRunning", false);
-                animator.SetBool("isIdle", false);
-            }
-            else
-            {
-                animator.SetBool("isWalking", false);
-                animator.SetBool("isRunning", false);
-                animator.SetBool("isIdle", true);
-            }
-        }*/
+       
 
     }
-    void OnCollisionEnter(Collision coll)
-    {
-        /* Debug.Log("Collision!");
-         if(coll.gameObject.CompareTag("Ground"))
-             IsTouchingGround = true;
-         // else: check for Booster, Enemy, etc.*/
-    }
+   
 
 }
