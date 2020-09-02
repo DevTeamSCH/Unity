@@ -10,6 +10,9 @@ public class JeremyController : MonoBehaviour
     float rotationSmoothVelocity;
     public Transform cam;
 
+    //TODO change to state machine
+    bool fps = true;
+
     private float walkSpeed = 0.05f;
     private float runSpeed = 0.1f;
     private float turnSpeed = 1.5f;
@@ -47,13 +50,25 @@ public class JeremyController : MonoBehaviour
         var vertical = Input.GetAxis("Vertical");
         var direction = new Vector3(horizontal, 0, vertical).normalized;
 
+        Vector3 moveDirection;
+
         if(direction.magnitude>=0.1)
         {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z)*Mathf.Rad2Deg+cam.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref rotationSmoothVelocity, rotationSmoothing);
-            transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
-            Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f)*Vector3.forward;
+
+            if (fps)
+            {
+                moveDirection = transform.right*horizontal+transform.forward*vertical;
+            }
+            else
+            {
+                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref rotationSmoothVelocity, rotationSmoothing);
+                transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
+                moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            }
             characterController.Move(moveDirection.normalized * speed * Time.deltaTime);
+
+
         }
         /*transform.Translate(0, 0, horizontal);
         transform.Rotate(0, vertical, 0);
