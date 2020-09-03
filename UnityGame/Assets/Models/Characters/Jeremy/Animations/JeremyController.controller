@@ -8,11 +8,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: isTouchingGround
-    m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: isIdle
+  - m_ConditionMode: 2
+    m_ConditionEvent: isJumping
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5645779776598732767}
@@ -37,7 +34,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: isTouchingGround
+    m_ConditionEvent: isJumping
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 9090271381933052255}
@@ -73,7 +70,7 @@ AnimatorStateMachine:
     m_Position: {x: 290, y: 210, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 9090271381933052255}
-    m_Position: {x: 400, y: 320, z: 0}
+    m_Position: {x: 410, y: 320, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -231,11 +228,11 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: isTouchingGround
+  - m_Name: isJumping
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 1
+    m_DefaultBool: 0
     m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
@@ -262,7 +259,7 @@ AnimatorStateTransition:
     m_ConditionEvent: isWalking
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: isTouchingGround
+    m_ConditionEvent: isJumping
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -5033944708861519375}
@@ -287,7 +284,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isTouchingGround
+    m_ConditionEvent: isJumping
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: isRunning
@@ -314,17 +311,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: isTouchingGround
-    m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: isIdle
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: isWalking
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: isRunning
+    m_ConditionEvent: isJumping
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 9090271381933052255}
@@ -332,9 +320,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.26162937
   m_TransitionOffset: 0
-  m_ExitTime: 0.75
+  m_ExitTime: 0.000000003108036
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -358,7 +346,7 @@ AnimatorStateTransition:
     m_ConditionEvent: isRunning
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: isTouchingGround
+    m_ConditionEvent: isJumping
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2620692398180471262}
@@ -452,7 +440,7 @@ AnimatorStateTransition:
     m_ConditionEvent: isRunning
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: isTouchingGround
+    m_ConditionEvent: isJumping
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -5033944708861519375}
@@ -477,7 +465,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: isTouchingGround
+    m_ConditionEvent: isJumping
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 9090271381933052255}
