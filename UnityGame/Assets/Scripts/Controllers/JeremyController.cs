@@ -5,7 +5,7 @@ using UnityEngine;
 public class JeremyController : MonoBehaviour
 {
     private float speed = 6;
-    float rotationSmoothing = 0.1f;
+    float rotationSmoothing = 0.05f;
     float rotationSmoothVelocity;
     public Transform cam;
 
@@ -22,7 +22,6 @@ public class JeremyController : MonoBehaviour
 
     private float walkSpeed = 0.05f;
     private float runSpeed = 0.1f;
-    private float turnSpeed = 1.5f;
     private float jumpHeight = 1f;
 
     public CharacterController characterController;
