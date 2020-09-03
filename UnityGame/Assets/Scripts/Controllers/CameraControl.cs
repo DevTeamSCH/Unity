@@ -12,19 +12,19 @@ public class CameraControl : MonoBehaviour
 {
     public GameObject fpsCamera;
     public GameObject tpsCamera;
-    public CameraState cameraState=CameraState.FPS;
+    public CameraState cameraState = CameraState.FPS;
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C))
         {
-            if (cameraState == CameraState.FPS)
+            if (cameraState == CameraState.FPS && tpsCamera != null)
             {
                 fpsCamera.SetActive(false);
                 tpsCamera.SetActive(true);
                 cameraState = CameraState.TPS;
             }
-            else
+            else if (fpsCamera != null)
             {
                 cameraState = CameraState.TPS;
                 fpsCamera.SetActive(true);
