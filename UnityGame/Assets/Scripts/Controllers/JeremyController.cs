@@ -57,7 +57,7 @@ public class JeremyController : MonoBehaviour
         {
             animator.SetBool("isWalking", true);
 
-            if (cameraControl.cameraState==CameraState.FPS)
+            if (cameraControl.cameraState == CameraState.FPS)
             {
                 moveDirection = transform.right * horizontal + transform.forward * vertical;
             }
@@ -65,12 +65,16 @@ public class JeremyController : MonoBehaviour
             {
                 float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
                 float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref rotationSmoothVelocity, rotationSmoothing);
-                transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
-                moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                transform.rotation = Quaternion.Euler(0f, angle, 0f);
+                moveDirection = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
             }
             characterController.Move(moveDirection.normalized * speed * Time.deltaTime);
         }
-        else animator.SetBool("isWalking", false);
+        else
+        {
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isIdle", true);
+        }
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
