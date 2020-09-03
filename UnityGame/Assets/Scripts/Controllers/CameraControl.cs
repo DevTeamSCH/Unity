@@ -23,12 +23,14 @@ public class CameraControl : MonoBehaviour
                 fpsCamera.SetActive(false);
                 tpsCamera.SetActive(true);
                 cameraState = CameraState.TPS;
+                
             }
             else if (fpsCamera != null)
             {
-                cameraState = CameraState.TPS;
                 fpsCamera.SetActive(true);
                 tpsCamera.SetActive(false);
+                cameraState = CameraState.FPS;
+
             }
         }
     }
