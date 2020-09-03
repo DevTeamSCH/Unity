@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Effects\DecalDestroyer.cs" />
     <Compile Include="Assets\Models\Characters\Jelly Fish Loli\Scripts\ChaScript.cs" />
     <Compile Include="Assets\Models\Characters\Jelly Fish Loli\Scripts\Move.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />

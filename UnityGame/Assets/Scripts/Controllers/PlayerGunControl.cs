@@ -10,6 +10,8 @@ public class PlayerGunControl : MonoBehaviour
     public float range = 40f;
 
     public Camera fpsCam;
+    public ParticleSystem muzzleFlash;
+    public GameObject impactEffect;
     void Start()
     {
         
@@ -28,6 +30,7 @@ public class PlayerGunControl : MonoBehaviour
 
     private void Shoot()
     {
+        muzzleFlash.Play();
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
@@ -35,7 +38,12 @@ public class PlayerGunControl : MonoBehaviour
             if (hc != null)
             {
                 hc.TakeDamage(damage);
+                
             }
+            GameObject effect = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            effect.GetComponent<DecalDestroyer>().lifeTime = 0.5f;
+            effect.transform.SetParent(hit.transform);
+
         }
 
     }
