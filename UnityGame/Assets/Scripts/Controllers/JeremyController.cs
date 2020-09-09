@@ -67,7 +67,7 @@ public class JeremyController : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
                 moveDirection = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
             }
-            characterController.Move(moveDirection.normalized * speed * Time.deltaTime);
+            characterController.Move(moveDirection.normalized * (speed * Time.deltaTime));
         }
         else
         {
