@@ -15,12 +15,12 @@ public class HealthController : MonoBehaviour
     private bool _hpChanged = false;
     
     //booster functions + variables
-    private List<HpBoost> _hpBoosts = new List<HpBoost>();
+    private List<Booster> _hpBoosts = new List<Booster>();
     public Text boosterText;
     
     public void BoostHp(int value, float duration){
         _hpChanged = true;
-        _hpBoosts.Add(new HpBoost(duration, value));
+        _hpBoosts.Add(new Booster(duration, value, "HP"));
         health += value;
         maxHealth += value;
     }
@@ -59,10 +59,10 @@ public class HealthController : MonoBehaviour
     void Update(){
         string boosters = "";
         
-        List<HpBoost> dels = new List<HpBoost>();
+        List<Booster> dels = new List<Booster>();
         foreach (var hpBoost in _hpBoosts){
             if (hpBoost.Refresh()){
-                maxHealth -= hpBoost.value;
+                maxHealth -= (int) hpBoost.value;
                 if (health > maxHealth)
                     health = maxHealth;
                 dels.Add(hpBoost);
@@ -71,7 +71,7 @@ public class HealthController : MonoBehaviour
             boosters += hpBoost.type + ":" + hpBoost.Write() + "\n";
         }
 
-        if (boosterText){
+        if (this.gameObject.CompareTag("Player")){
             boosterText.text = boosters;
         }
         

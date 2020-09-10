@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Booster : Object{
-	protected float _duration;
-	protected float _tmpTime = 0f;
+	private float _duration;
+	private float _tmpTime = 0f;
+	public float value;
+	public string type;
 
-	public Booster(float duration){
+	public Booster(float duration, float value, string type){
 		_duration = duration;
 		_tmpTime = 0;
+		this.value = value;
 	}
 
 	public bool Refresh(){
@@ -20,14 +23,5 @@ public class Booster : Object{
 		int sec = (int) (_duration - _tmpTime) + 1;
 		string ret = (sec / 60).ToString("00") + ":" + (sec % 60).ToString("00");
 		return ret;
-	}
-}
-
-public class HpBoost : Booster{
-	public int value;
-	public string type = "HP";
-
-	public HpBoost(float duration, int value) : base(duration){
-		this.value = value;
 	}
 }
