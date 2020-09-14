@@ -66,19 +66,23 @@
     <Compile Include="Assets\Effects\DecalDestroyer.cs" />
     <Compile Include="Assets\Models\Characters\Jelly Fish Loli\Scripts\ChaScript.cs" />
     <Compile Include="Assets\Models\Characters\Jelly Fish Loli\Scripts\Move.cs" />
-    <Compile Include="Assets\Scripts\Bullet.cs" />
-    <Compile Include="Assets\Scripts\Controllers\CameraControl.cs" />
-    <Compile Include="Assets\Scripts\Controllers\GunControl.cs" />
     <Compile Include="Assets\Scripts\Controllers\HealthController.cs" />
     <Compile Include="Assets\Scripts\Controllers\JeremyController.cs" />
     <Compile Include="Assets\Scripts\Controllers\LookControl.cs" />
     <Compile Include="Assets\Scripts\Controllers\PatrolControl.cs" />
     <Compile Include="Assets\Scripts\Controllers\PlayerGunControl.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Shooting\Bullet.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Shooting\CameraControl.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Shooting\GunControl.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Shooting\WeaponSwitcher.cs" />
     <Compile Include="Assets\Scripts\UI\HealthBar.cs" />
     <None Include="Assets\Models\Characters\Jeremy\Docs\MaleCharacterAnimation.txt" />
     <None Include="Assets\Models\Characters\Jelly Fish Loli\ReadMe.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/Lenovo/Documents/GitHub/Unity/UnityGame/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>C:/Users/Lenovo/Documents/GitHub/Unity/UnityGame/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>C:/Users/Lenovo/Documents/GitHub/Unity/UnityGame/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
@@ -104,6 +108,9 @@
     <Reference Include="Unity.2D.Tilemap.Editor">
       <HintPath>C:/Users/Lenovo/Documents/GitHub/Unity/UnityGame/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>C:/Users/Lenovo/Documents/GitHub/Unity/UnityGame/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:/Users/Lenovo/Documents/GitHub/Unity/UnityGame/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
@@ -112,12 +119,6 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>C:/Users/Lenovo/Documents/GitHub/Unity/UnityGame/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Cinemachine">
-      <HintPath>C:/Users/Lenovo/Documents/GitHub/Unity/UnityGame/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
-    </Reference>
-    <Reference Include="com.unity.cinemachine.editor">
-      <HintPath>C:/Users/Lenovo/Documents/GitHub/Unity/UnityGame/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.10f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

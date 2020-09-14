@@ -1,36 +1,57 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
 public class PlayerGunControl : MonoBehaviour
 {
-    // Start is called before the first frame update
     public int damage = 10;
     public float range = 40f;
 
     public Camera fpsCam;
     public ParticleSystem muzzleFlash;
     public GameObject impactEffect;
+
+    public int maxAmmo = 10;
+    public int currentAmmo;
+    public float reloadTime = 1f;
+    private bool isReloading = false;
+
     void Start()
     {
-        
+        StartCoroutine(Reload());
+        currentAmmo = maxAmmo;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if (isReloading) return;
+        if(currentAmmo<=0 || Input.GetKeyDown(KeyCode.R))
+        {
+            StartCoroutine(Reload());
+            return;
+        }
         if(Input.GetButtonDown("Fire1"))
         {
             Shoot();
         }
-
+      
         
+    }
+    private void OnEnable()
+    {
+        isReloading = false;
+    }
+    IEnumerator Reload()
+    {
+        isReloading = true;
+        yield return new WaitForSeconds(reloadTime);
+        currentAmmo = maxAmmo;
+        isReloading = false;
     }
 
     private void Shoot()
     {
         muzzleFlash.Play();
+        currentAmmo--;
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
