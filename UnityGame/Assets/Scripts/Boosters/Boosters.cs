@@ -12,6 +12,7 @@ public class Booster : Object{
 		_duration = duration;
 		_tmpTime = 0;
 		this.value = value;
+		this.type = type;
 	}
 
 	public bool Refresh(){
@@ -21,7 +22,7 @@ public class Booster : Object{
 
 	public string Write(){
 		int sec = (int) (_duration - _tmpTime) + 1;
-		string ret = (sec / 60).ToString("00") + ":" + (sec % 60).ToString("00");
+		string ret = type + ":" + (sec / 60).ToString("00") + ":" + (sec % 60).ToString("00") + '\n';
 		return ret;
 	}
 }

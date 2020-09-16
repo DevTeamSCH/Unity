@@ -1,35 +1,40 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class HealthController : MonoBehaviour
 {
     public int health;
     public int maxHealth = 100;
-    private int _originalMax;
     public HealthBar healthBar;
     
     public Text hpText;
     private bool _hpChanged = false;
     
-    //booster functions + variables
-    private List<Booster> _hpBoosts = new List<Booster>();
-    public Text boosterText;
-    
-    public void BoostHp(int value, float duration){
+    //booster functions
+    public void ApplyHpBooster(int value){
         _hpChanged = true;
-        _hpBoosts.Add(new Booster(duration, value, "HP"));
         health += value;
         maxHealth += value;
     }
-    
-    
+
+    public void DenyHpBooster(int value){
+        _hpChanged = true;
+        maxHealth -= value;
+        
+        if (health > maxHealth)
+            health = maxHealth;
+        
+    }
+    //Booster function ends
+
     void Start()
     {
         health = maxHealth;
-        _originalMax = maxHealth;
     }
     
     public void TakeDamage(int amount){
@@ -57,28 +62,7 @@ public class HealthController : MonoBehaviour
     }
 
     void Update(){
-        string boosters = "";
-        
-        List<Booster> dels = new List<Booster>();
-        foreach (var hpBoost in _hpBoosts){
-            if (hpBoost.Refresh()){
-                maxHealth -= (int) hpBoost.value;
-                if (health > maxHealth)
-                    health = maxHealth;
-                dels.Add(hpBoost);
-                _hpChanged = true;
-            }
-            boosters += hpBoost.type + ":" + hpBoost.Write() + "\n";
-        }
 
-        if (this.gameObject.CompareTag("Player")){
-            boosterText.text = boosters;
-        }
-        
-        foreach (var hpBoost in dels){
-            _hpBoosts.Remove(hpBoost);
-        }
-        
         if(health == 0)
             Die();
         

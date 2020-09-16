@@ -10,7 +10,7 @@ public class HpBoosterControll : MonoBehaviour{
 	
 	private void OnTriggerEnter(Collider other){
 		if (other.CompareTag("Player")){
-			other.GetComponent<HealthController>().BoostHp(value, duration);
+			GameManager.BoosterSettings.Boost(duration, value, "Hp");
 			Destroy(this.gameObject);
 		}
 	}

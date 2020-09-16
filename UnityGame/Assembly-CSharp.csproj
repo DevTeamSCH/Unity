@@ -68,6 +68,7 @@
      <Compile Include="Assets\Scripts\Controllers\JeremyController.cs" />
      <Compile Include="Assets\Scripts\Controllers\LookControl.cs" />
      <Compile Include="Assets\Scripts\Controllers\PatrolControl.cs" />
+     <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\UI\HealthBar.cs" />
      <None Include="Assets\Models\Characters\Jeremy\Docs\MaleCharacterAnimation.txt" />
      <None Include="Assets\Models\Characters\Jelly Fish Loli\ReadMe.txt" />

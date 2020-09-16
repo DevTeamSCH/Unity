@@ -29,11 +29,15 @@ public class JeremyController : MonoBehaviour
     public Animator animator;
     
     //JmpBooster
-    private List<Booster> _jmpBoosters = new List<Booster>();
-    public void BoostJmp(float duration, float value){
+    public void AppyJmpBooster(float value){
         jumpHeight += value;
-        _jmpBoosters.Add(new Booster(duration, value, "Jmp"));
     }
+
+    public void DenyJmpBooster(float value){
+        jumpHeight -= value;
+    }
+    
+    //JmpBooster end
 
     // Start is called before the first frame update
     void Start()
@@ -46,21 +50,6 @@ public class JeremyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        //jmpBoost
-        List<Booster> dels = new List<Booster>();
-        foreach (var jmpBoost in _jmpBoosters){
-            if (jmpBoost.Refresh()){
-                jumpHeight -= jmpBoost.value;
-                dels.Add(jmpBoost);
-                Debug.Log(jmpBoost.value.ToString());
-            }
-        }
-        
-        foreach (var jmpBoost in dels){
-            _jmpBoosters.Remove(jmpBoost);
-        }
-        
         isGrounded = Physics.CheckSphere(groundIndicator.position, groundDistance, groundMask);
         if (isGrounded && velocity.y < 0)
         {
