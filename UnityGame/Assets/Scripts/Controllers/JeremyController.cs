@@ -27,7 +27,17 @@ public class JeremyController : MonoBehaviour
     public CharacterController characterController;
 
     public Animator animator;
+    
+    //JmpBooster
+    public void AppyJmpBooster(float value){
+        jumpHeight += value;
+    }
 
+    public void DenyJmpBooster(float value){
+        jumpHeight -= value;
+    }
+    
+    //JmpBooster end
 
     // Start is called before the first frame update
     void Start()
@@ -67,7 +77,7 @@ public class JeremyController : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
                 moveDirection = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
             }
-            characterController.Move(moveDirection.normalized * speed * Time.deltaTime);
+            characterController.Move(moveDirection.normalized * (speed * Time.deltaTime));
         }
         else
         {
