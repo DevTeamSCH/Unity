@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3484248493016426404}
-  - component: {fileID: 3484248493016426405}
-  - component: {fileID: 3484248493016426426}
+  - component: {fileID: 6443351435039008971}
+  - component: {fileID: 6068515649394721651}
   m_Layer: 0
   m_Name: HpBoost
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &3484248493016426405
+--- !u!135 &6443351435039008971
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,7 +46,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.55
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3484248493016426426
+--- !u!114 &6068515649394721651
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -55,7 +55,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3484248493016426427}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 662ec9296781cb5438db67b73d6b4fcc, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d12318edc20e394092234829441a7d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 5

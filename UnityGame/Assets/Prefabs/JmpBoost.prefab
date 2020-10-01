@@ -87,8 +87,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4735793379214816497}
-  - component: {fileID: 5322597261982178638}
-  - component: {fileID: 7819363744808209912}
+  - component: {fileID: 2428087753166965113}
+  - component: {fileID: 5084859342097053405}
   m_Layer: 0
   m_Name: JmpBoost
   m_TagString: Untagged
@@ -111,7 +111,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &5322597261982178638
+--- !u!114 &2428087753166965113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7188707177564095197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f98e77801110412418a8604e49ce10db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 5
+  value: 5
+--- !u!135 &5084859342097053405
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,15 +138,3 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.55
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7819363744808209912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7188707177564095197}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f98e77801110412418a8604e49ce10db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
