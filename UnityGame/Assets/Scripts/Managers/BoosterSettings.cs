@@ -3,7 +3,7 @@ using Boosters;
 using UnityEngine;
 
 namespace Managers{
-    public class BoosterSettings : Object{
+    public class BoosterSettings{
         internal List<Booster> appliedBoosters = new List<Booster>();
         internal List<Booster> delete = new List<Booster>();
         private readonly HealthController _hpcontrolController;

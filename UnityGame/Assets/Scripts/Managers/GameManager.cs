@@ -12,13 +12,15 @@ namespace Managers{
 		public static BoosterSettings boosterSettings;
 		public Text boosterText;
 		
-		public static InventorySystem inventorySystem;
+		public static ViewSystem viewSystem;
 		public Text targetName;
+
+		public Sprite originalSlot;
 		
 		private void Awake(){
 			gameManager = this;
 			boosterSettings = new BoosterSettings(gameManager);
-			inventorySystem = new InventorySystem(gameManager);
+			viewSystem = new ViewSystem(gameManager);
 		}
 
 		private void FixedUpdate(){
@@ -41,7 +43,8 @@ namespace Managers{
 		}
 
 		private void Update(){
-			targetName.text = inventorySystem.NameView();
+			viewSystem.UpdateRay();
+			targetName.text = viewSystem.NameView();
 		}
 	}
 }

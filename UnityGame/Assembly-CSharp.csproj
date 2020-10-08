@@ -56,6 +56,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\FantasyIconsPackFree\Demo\IconViewer.cs" />
+     <Compile Include="Assets\ItemSlot.cs" />
      <Compile Include="Assets\Models\Characters\Jelly Fish Loli\Scripts\ChaScript.cs" />
      <Compile Include="Assets\Models\Characters\Jelly Fish Loli\Scripts\Move.cs" />
      <Compile Include="Assets\Scripts\Boosters\Boosters.cs" />
@@ -70,12 +72,15 @@
      <Compile Include="Assets\Scripts\Controllers\PatrolControl.cs" />
      <Compile Include="Assets\Scripts\Managers\BoosterSettings.cs" />
      <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
-     <Compile Include="Assets\Scripts\Managers\InventorySystem.cs" />
+     <Compile Include="Assets\Scripts\Managers\Inventory\InventoryController.cs" />
+     <Compile Include="Assets\Scripts\Managers\Inventory\InventorySystem.cs" />
+     <Compile Include="Assets\Scripts\Managers\Inventory\PickUp.cs" />
      <Compile Include="Assets\Scripts\UI\BackgroundControl.cs" />
      <Compile Include="Assets\Scripts\UI\HealthBar.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
+     <None Include="Assets\Pixel Art Icon Pack - RPG\Shader\SH Sprite Icon Outline Color.shader" />
      <None Include="Assets\Models\Characters\Jeremy\Docs\MaleCharacterAnimation.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
@@ -93,6 +98,7 @@
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
+     <None Include="Assets\Pixel Art Icon Pack - RPG\Shader\SH UI Icon Outline Color.shader" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Programoksaját/Unity/UnityGame/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
