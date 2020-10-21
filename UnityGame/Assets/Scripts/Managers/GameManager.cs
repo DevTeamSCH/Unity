@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Boosters;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,18 +8,22 @@ namespace Managers{
 		public static GameManager gameManager;
 		public GameObject player;
 		
-		public static BoosterSettings boosterSettings;
+		public BoosterSettings boosterSettings;
 		public Text boosterText;
 		
-		public static ViewSystem viewSystem;
+		public ViewSystem viewSystem;
 		public Text targetName;
-
+		
+		[Header("Inventory Variables")]
 		public Sprite originalSlot;
+		public InventoryEvents iE;
+		public GameObject tmpItem;
 		
 		private void Awake(){
 			gameManager = this;
 			boosterSettings = new BoosterSettings(gameManager);
 			viewSystem = new ViewSystem(gameManager);
+			iE = new InventoryEvents(tmpItem);
 		}
 
 		private void FixedUpdate(){
@@ -45,6 +48,7 @@ namespace Managers{
 		private void Update(){
 			viewSystem.UpdateRay();
 			targetName.text = viewSystem.NameView();
+			iE.Update();
 		}
 	}
 }

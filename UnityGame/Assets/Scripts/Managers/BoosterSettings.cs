@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Boosters;
 using UnityEngine;
 
 namespace Managers{
@@ -14,14 +13,14 @@ namespace Managers{
             _jeremyController = gameManager.player.GetComponent<JeremyController>();
         }
 		
-        public void Boost(float duration, float value, string type){
-            appliedBoosters.Add(new Booster(duration, value, type));
-            switch (type){
+        public void Boost(Booster boost){
+            appliedBoosters.Add(boost);
+            switch (boost.type){
                 case "Hp":
-                    _hpcontrolController.ApplyHpBooster((int) value);
+                    _hpcontrolController.ApplyHpBooster((int) boost.value);
                     break;
                 case "Jmp":
-                    _jeremyController.AppyJmpBooster(value);
+                    _jeremyController.AppyJmpBooster(boost.value);
                     break;
             }
         }

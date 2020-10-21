@@ -7,13 +7,13 @@ using UnityEngine.Experimental.PlayerLoop;
 using Object = UnityEngine.Object;
 
 namespace Managers{
-	public class ViewSystem{
+	public class ViewSystem {
 		private GameManager _gameManager;
 		private Ray _ray;
 		private RaycastHit _hit;
 		private bool _raySuccess = false;
 		private float _hitDistance;
-		private PickUp _pickUp;
+		private PickUpController _pickUp;
 
 		public ViewSystem(GameManager gameManager){
 			_gameManager = gameManager;
@@ -31,7 +31,7 @@ namespace Managers{
 			return _hitDistance;
 		}
 
-		public PickUp GetPickUp(){
+		public PickUpController GetPickUp(){
 			return _pickUp;
 		}
 
@@ -42,7 +42,7 @@ namespace Managers{
 				_hitDistance = Vector3.Distance(_hit.collider.transform.position,
 					_gameManager.player.transform.position);
 				if (_hit.collider.tag.Equals("Pickable"))
-					_pickUp = _hit.collider.GetComponent<PickUp>();
+					_pickUp = _hit.collider.GetComponent<PickUpController>();
 			}
 		}
 
@@ -52,45 +52,14 @@ namespace Managers{
 					if (_hitDistance <= 10f)
 						return _hit.collider.name;
 				} else if (_hit.collider.tag.Equals("Pickable")){
-					if (_hitDistance <= _pickUp.pickUpDistane)
-						return _pickUp.itemName + " (E)";
+					if (_hitDistance <= _pickUp.item.pickUpDistane)
+						return _pickUp.item.itemName + " (E)";
 					if (_hitDistance <= 10f)
-						return _pickUp.itemName;
+						return _pickUp.item.itemName;
 				}
 			}
 
 			return String.Empty;
-		}
-	}
-
-	public class Item {
-		private String _name;
-		private int _slot;
-		private Sprite _img;
-
-		public Sprite GetSprite(){
-			return _img;
-		}
-
-		public String GetName(){
-			return _name;
-		}
-
-		public Item(String name, Sprite img){
-			_name = name;
-			_img = img;
-		}
-
-		public void SetSlot(int slot){
-			_slot = slot;
-		}
-		
-		public int GetSlot(){
-			return _slot;
-		}
-
-		public static int Compare(Item i1, Item i2){
-			return i1._slot.CompareTo(i2._slot);
 		}
 	}
 
@@ -118,13 +87,17 @@ namespace Managers{
 			return _items.Count == _maxSize;
 		}
 
+		public void RefreshInventory(){
+			
+		}
+
 		public void Store(ref Item item){
 			if (!IsFull()){
 				item.SetSlot(GetLowestIndex());
 				_items.Add(item);
 				_items.Sort(Item.Compare);
 				foreach (var tmpItem in _items){
-					_itemSlots[tmpItem.GetSlot()].SetSprite(tmpItem.GetSprite());
+					_itemSlots[tmpItem.GetSlot()].SetItem(tmpItem);
 				}
 			}
 		}

@@ -57,12 +57,10 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\FantasyIconsPackFree\Demo\IconViewer.cs" />
-     <Compile Include="Assets\ItemSlot.cs" />
      <Compile Include="Assets\Models\Characters\Jelly Fish Loli\Scripts\ChaScript.cs" />
      <Compile Include="Assets\Models\Characters\Jelly Fish Loli\Scripts\Move.cs" />
-     <Compile Include="Assets\Scripts\Boosters\Boosters.cs" />
-     <Compile Include="Assets\Scripts\Boosters\HpBoosterControl.cs" />
-     <Compile Include="Assets\Scripts\Boosters\JmpBoostController.cs" />
+     <Compile Include="Assets\Scriptable Objects\Booster.cs" />
+     <Compile Include="Assets\Scriptable Objects\Item.cs" />
      <Compile Include="Assets\Scripts\Bullet.cs" />
      <Compile Include="Assets\Scripts\Controllers\CameraControl.cs" />
      <Compile Include="Assets\Scripts\Controllers\GunControl.cs" />
@@ -70,11 +68,15 @@
      <Compile Include="Assets\Scripts\Controllers\JeremyController.cs" />
      <Compile Include="Assets\Scripts\Controllers\LookControl.cs" />
      <Compile Include="Assets\Scripts\Controllers\PatrolControl.cs" />
+     <Compile Include="Assets\Scripts\Managers\Boosters\BoosterController.cs" />
      <Compile Include="Assets\Scripts\Managers\BoosterSettings.cs" />
      <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
      <Compile Include="Assets\Scripts\Managers\Inventory\InventoryController.cs" />
+     <Compile Include="Assets\Scripts\Managers\Inventory\InventoryEvents.cs" />
      <Compile Include="Assets\Scripts\Managers\Inventory\InventorySystem.cs" />
-     <Compile Include="Assets\Scripts\Managers\Inventory\PickUp.cs" />
+     <Compile Include="Assets\Scripts\Managers\Inventory\ItemSlot.cs" />
+     <Compile Include="Assets\Scripts\Managers\Inventory\PickUpController.cs" />
+     <Compile Include="Assets\Scripts\Managers\Inventory\tmpItemController.cs" />
      <Compile Include="Assets\Scripts\UI\BackgroundControl.cs" />
      <Compile Include="Assets\Scripts\UI\HealthBar.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
