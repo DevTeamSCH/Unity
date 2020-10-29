@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class tmpItemController : MonoBehaviour{
     private Image _img;
 
-    private void Awake(){
+    private void Start(){
         _img = GetComponent<Image>();
         ResetSprite();
     }

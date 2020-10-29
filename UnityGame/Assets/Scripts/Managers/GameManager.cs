@@ -19,7 +19,7 @@ namespace Managers{
 		public InventoryEvents iE;
 		public GameObject tmpItem;
 		
-		private void Awake(){
+		private void Start(){
 			gameManager = this;
 			boosterSettings = new BoosterSettings(gameManager);
 			viewSystem = new ViewSystem(gameManager);

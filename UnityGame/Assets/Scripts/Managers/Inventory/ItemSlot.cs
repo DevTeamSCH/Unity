@@ -11,14 +11,21 @@ public class ItemSlot : MonoBehaviour {
 	private Image _image;
 	private Item _storedItem;
 	private ItemSlot _thisSlot;
+	private int _slotId;
 
 	private void Awake() {
+		_storedItem = null;
 		_image = GetComponent<Image>();
 		_thisSlot = GetComponent<ItemSlot>();
 	}
 
+	public void SetId(int id) {
+		_slotId = id;
+	}
+
 	public void SetItem(Item item) {
 		_storedItem = item;
+		item.SetSlot(_slotId);
 		_image.sprite = item.img;
 		_empty = false;
 	}
