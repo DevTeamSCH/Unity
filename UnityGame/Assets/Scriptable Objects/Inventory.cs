@@ -13,7 +13,7 @@ public class Inventory : ScriptableObject {
 	public Canvas uiPrefab;
 	public Canvas ui;
 
-	public void Start() {
+	public void Init() {
 		_items = new List<Item>();
 		ui = Instantiate(uiPrefab);
 

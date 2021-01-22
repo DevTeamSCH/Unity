@@ -9,7 +9,7 @@ public abstract class InventoryController : MonoBehaviour
     public Inventory inventory;
     
     protected virtual void Start() {
-        inventory.Start();
+        inventory.Init();
     }
 
     public virtual void SwitchState() {

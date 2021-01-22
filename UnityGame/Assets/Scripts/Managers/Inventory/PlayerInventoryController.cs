@@ -24,7 +24,7 @@ public class PlayerInventoryController : InventoryController {
         _next = CursorLockMode.None;
         Cursor.visible = false;
         
-        inventory.Start();
+        inventory.Init();
     }
 
     public override void SwitchState() {

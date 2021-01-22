@@ -42,7 +42,7 @@ public class ItemSlot : MonoBehaviour {
 
 	public void OnClick() {
 		Item tmp = GameManager.gameManager.iE.GetTmpClicked();
-		Debug.Log(tmp);
+		Debug.Log(this.transform.parent.name+" - " +tmp);
 		if (_empty) {
 			if (tmp != null) {
 				SetItem(tmp);
