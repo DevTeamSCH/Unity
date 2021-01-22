@@ -35,26 +35,26 @@ public class ItemSlot : MonoBehaviour {
 	}
 
 	public void RemoveContent() {
-		_image.sprite = GameManager.gameManager.originalSlot;
+		_image.sprite = GameManager._instance.originalSlot;
 		_storedItem = null;
 		_empty = true;
 	}
 
 	public void OnClick() {
-		Item tmp = GameManager.gameManager.iE.GetTmpClicked();
+		Item tmp = GameManager._instance.iE.GetTmpClicked();
 		Debug.Log(this.transform.parent.name+" - " +tmp);
 		if (_empty) {
 			if (tmp != null) {
 				SetItem(tmp);
-				GameManager.gameManager.iE.Reset();
+				GameManager._instance.iE.Reset();
 			}
 		} else {
 			if (tmp == null) {
-				GameManager.gameManager.iE.SetTmpClicked(_storedItem);
-				GameManager.gameManager.iE.SetTmpSlot(_thisSlot);
+				GameManager._instance.iE.SetTmpClicked(_storedItem);
+				GameManager._instance.iE.SetTmpSlot(_thisSlot);
 				RemoveContent();
 			} else {
-				GameManager.gameManager.iE.Swap(_thisSlot);
+				GameManager._instance.iE.Swap(_thisSlot);
 			}
 		}
 	}

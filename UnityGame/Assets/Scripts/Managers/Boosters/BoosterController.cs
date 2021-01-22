@@ -8,7 +8,7 @@ public class BoosterController : MonoBehaviour{
 	
 	private void OnTriggerEnter(Collider other){
 		if (other.CompareTag("Player")){
-			GameManager.gameManager.boosterSettings.Boost(booster);
+			GameManager._instance.boosterSettings.Boost(booster);
 			Destroy(gameObject);
 		}
 	}

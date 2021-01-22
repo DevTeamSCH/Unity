@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Managers;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerGunControl : MonoBehaviour
@@ -9,12 +10,14 @@ public class PlayerGunControl : MonoBehaviour
     public Camera fpsCam;
     public ParticleSystem muzzleFlash;
     public GameObject impactEffect;
+    public WeaponUI ui;
 
     public int maxAmmo = 10;
     public int currentAmmo;
     public float reloadTime = 1f;
     private bool isReloading = false;
 
+    
     void Start()
     {
         StartCoroutine(Reload());
@@ -39,6 +42,7 @@ public class PlayerGunControl : MonoBehaviour
     private void OnEnable()
     {
         isReloading = false;
+        ui.UpdateAmmo(currentAmmo, maxAmmo);
     }
     IEnumerator Reload()
     {
@@ -46,19 +50,23 @@ public class PlayerGunControl : MonoBehaviour
         yield return new WaitForSeconds(reloadTime);
         currentAmmo = maxAmmo;
         isReloading = false;
+        ui.UpdateAmmo(currentAmmo, maxAmmo);
     }
 
     private void Shoot()
     {
         muzzleFlash.Play();
         currentAmmo--;
-        RaycastHit hit;
-        
-        if (Physics.Raycast(fpsCam.transform.position+ fpsCam.transform.forward*0.1f, fpsCam.transform.forward, out hit, range))
+        RaycastHit hit = GameManager._instance.viewSystem.GetHit();
+        ui.UpdateAmmo(currentAmmo, maxAmmo);
+       // if (Physics.Raycast(fpsCam.transform.position+ fpsCam.transform.forward*0.1f, fpsCam.transform.forward, out hit, range))
+        if (hit.transform!=null && GameManager._instance.viewSystem.GetDistanece()<=range)
         {
+            Debug.Log("poof " + GameManager._instance.viewSystem.GetDistanece());
             HealthController hc = hit.transform.GetComponent<HealthController>();
             if (hc != null)
             {
+                Debug.Log("loli");
                 hc.TakeDamage(damage);
                 
             }

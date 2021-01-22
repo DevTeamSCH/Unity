@@ -6,6 +6,7 @@ using UnityEngine;
 public class WeaponSwitcher : MonoBehaviour
 {
     private int selectedWeapon = 0; //index of the selected weapon
+    public WeaponUI ui;
 
     public int SelectedWeapon //auto-rotate incrementation and decrementation
     {
@@ -21,6 +22,7 @@ public class WeaponSwitcher : MonoBehaviour
                 selectedWeapon = transform.childCount - 1;
             }
             else selectedWeapon = value;
+
         }
     }
     void Start()
@@ -64,5 +66,7 @@ public class WeaponSwitcher : MonoBehaviour
             else weapon.gameObject.SetActive(false);
             i++;
         }
+        ui.ChooseWeapon(SelectedWeapon);
+
     }
 }

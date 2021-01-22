@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Managers{
 	public class GameManager : MonoBehaviour{
-		public static GameManager gameManager;
+		public static GameManager _instance;
 		public GameObject player;
 		
 		public BoosterSettings boosterSettings;
@@ -18,11 +18,20 @@ namespace Managers{
 		public Sprite originalSlot;
 		public InventoryEvents iE;
 		public GameObject tmpItem;
-		
+		private void Awake()
+		{
+			if (_instance != null && _instance != this)
+			{
+				Destroy(this.gameObject);
+			}
+			else
+			{
+				_instance = this;
+			}
+		}
 		private void Start(){
-			gameManager = this;
-			boosterSettings = new BoosterSettings(gameManager);
-			viewSystem = new ViewSystem(gameManager);
+			boosterSettings = new BoosterSettings(_instance);
+			viewSystem = new ViewSystem(/*_instance*/);
 			iE = new InventoryEvents(tmpItem);
 		}
 

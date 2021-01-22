@@ -9,6 +9,7 @@ TagManager:
   - Booster
   - Pickable
   - Container
+  - Enemy
   layers:
   - Default
   - TransparentFX

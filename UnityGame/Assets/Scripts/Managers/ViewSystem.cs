@@ -9,7 +9,7 @@ using Object = UnityEngine.Object;
 
 namespace Managers{
 	public class ViewSystem {
-		private GameManager _gameManager;
+		private GameManager _gameManager = GameManager._instance;
 		private Ray _ray;
 		private RaycastHit _hit;
 		private bool _raySuccess = false;
@@ -17,13 +17,14 @@ namespace Managers{
 		private PickUpController _pickUp;
 		private ContainerInventoryController _container;
 
-		public ViewSystem(GameManager gameManager){
+		/*public ViewSystem(GameManager gameManager){
 			_gameManager = gameManager;
-		}
+		}*/
 
 		public RaycastHit GetHit(){
 			return _hit;
 		}
+
 
 		public bool GetSuccess(){
 			return _raySuccess;
@@ -44,13 +45,14 @@ namespace Managers{
 		public void UpdateRay(){
 			_ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			_raySuccess = Physics.Raycast(_ray, out _hit);
-			if (_raySuccess){
+			if (_raySuccess && _gameManager.player!=null){
 				_hitDistance = Vector3.Distance(_hit.collider.transform.position,
 					_gameManager.player.transform.position);
 				if (_hit.collider.tag.Equals("Pickable"))
 					_pickUp = _hit.collider.GetComponent<PickUpController>();
 				else if (_hit.collider.tag.Equals("Container"))
 					_container = _hit.collider.GetComponent<ContainerInventoryController>();
+				
 			}
 		}
 

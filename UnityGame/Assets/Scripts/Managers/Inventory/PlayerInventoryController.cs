@@ -44,22 +44,22 @@ public class PlayerInventoryController : InventoryController {
 
     public override void FixedUpdate(){
         if (Input.GetKeyDown("e")){
-            if (GameManager.gameManager.viewSystem.GetSuccess()){
-                RaycastHit hit = GameManager.gameManager.viewSystem.GetHit();
+            if (GameManager._instance.viewSystem.GetSuccess()){
+                RaycastHit hit = GameManager._instance.viewSystem.GetHit();
                 if (!hit.Equals(null) && hit.collider.tag.Equals("Pickable")){
                     if (!inventory.IsFull()){
                         Debug.Log(hit.collider.tag);
                         Item tmpItem = null;
-                        if (GameManager.gameManager.viewSystem.GetPickUp()
-                            .PickItUp(GameManager.gameManager.viewSystem.GetDistanece(), ref tmpItem))
+                        if (GameManager._instance.viewSystem.GetPickUp()
+                            .PickItUp(GameManager._instance.viewSystem.GetDistanece(), ref tmpItem))
                             inventory.Store(ref tmpItem);
                     }
                 } else if (!hit.Equals(null) && hit.collider.tag.Equals("Container")){
-                    if (GameManager.gameManager.viewSystem.GetDistanece() <=
-                        GameManager.gameManager.viewSystem.GetContainer().openDistance) {
-                        GameManager.gameManager.viewSystem.GetContainer().SwitchState();
+                    if (GameManager._instance.viewSystem.GetDistanece() <=
+                        GameManager._instance.viewSystem.GetContainer().openDistance) {
+                        GameManager._instance.viewSystem.GetContainer().SwitchState();
                         SwitchState();
-                        _tmpContainer = GameManager.gameManager.viewSystem.GetContainer();
+                        _tmpContainer = GameManager._instance.viewSystem.GetContainer();
                         _containerOpen = true;
                     }
                 } else if (_containerOpen){

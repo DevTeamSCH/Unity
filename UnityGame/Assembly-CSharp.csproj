@@ -64,19 +64,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Effects\DecalDestroyer.cs" />
     <Compile Include="Assets\FantasyIconsPackFree\Demo\IconViewer.cs" />
     <Compile Include="Assets\Models\Characters\Jelly Fish Loli\Scripts\ChaScript.cs" />
     <Compile Include="Assets\Models\Characters\Jelly Fish Loli\Scripts\Move.cs" />
     <Compile Include="Assets\Scriptable Objects\Booster.cs" />
     <Compile Include="Assets\Scriptable Objects\Inventory.cs" />
     <Compile Include="Assets\Scriptable Objects\Item.cs" />
-    <Compile Include="Assets\Scripts\Bullet.cs" />
-    <Compile Include="Assets\Scripts\Controllers\CameraControl.cs" />
-    <Compile Include="Assets\Scripts\Controllers\GunControl.cs" />
     <Compile Include="Assets\Scripts\Controllers\HealthController.cs" />
     <Compile Include="Assets\Scripts\Controllers\JeremyController.cs" />
     <Compile Include="Assets\Scripts\Controllers\LookControl.cs" />
     <Compile Include="Assets\Scripts\Controllers\PatrolControl.cs" />
+    <Compile Include="Assets\Scripts\Controllers\PlayerGunControl.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Shooting\Bullet.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Shooting\CameraControl.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Shooting\GunControl.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Shooting\WeaponSwitcher.cs" />
     <Compile Include="Assets\Scripts\Managers\Boosters\BoosterController.cs" />
     <Compile Include="Assets\Scripts\Managers\BoosterSettings.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
@@ -90,15 +93,20 @@
     <Compile Include="Assets\Scripts\Managers\ViewSystem.cs" />
     <Compile Include="Assets\Scripts\UI\BackgroundControl.cs" />
     <Compile Include="Assets\Scripts\UI\HealthBar.cs" />
+    <Compile Include="Assets\Scripts\UI\WeaponUI.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\Pixel Art Icon Pack - RPG\Shader\SH Sprite Icon Outline Color.shader" />
     <None Include="Assets\Models\Characters\Jeremy\Docs\MaleCharacterAnimation.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\Models\Characters\Jelly Fish Loli\ReadMe.txt" />
+    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
