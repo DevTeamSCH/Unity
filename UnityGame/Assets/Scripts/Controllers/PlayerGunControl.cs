@@ -53,7 +53,8 @@ public class PlayerGunControl : MonoBehaviour
         muzzleFlash.Play();
         currentAmmo--;
         RaycastHit hit;
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
+        
+        if (Physics.Raycast(fpsCam.transform.position+ fpsCam.transform.forward*0.1f, fpsCam.transform.forward, out hit, range))
         {
             HealthController hc = hit.transform.GetComponent<HealthController>();
             if (hc != null)
