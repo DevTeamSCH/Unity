@@ -75,11 +75,12 @@
     <Compile Include="Assets\Scripts\Controllers\JeremyController.cs" />
     <Compile Include="Assets\Scripts\Controllers\LookControl.cs" />
     <Compile Include="Assets\Scripts\Controllers\PatrolControl.cs" />
-    <Compile Include="Assets\Scripts\Controllers\PlayerGunControl.cs" />
     <Compile Include="Assets\Scripts\Controllers\Shooting\Bullet.cs" />
     <Compile Include="Assets\Scripts\Controllers\Shooting\CameraControl.cs" />
     <Compile Include="Assets\Scripts\Controllers\Shooting\GunControl.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Shooting\PlayerGunControl.cs" />
     <Compile Include="Assets\Scripts\Controllers\Shooting\WeaponSwitcher.cs" />
+    <Compile Include="Assets\Scripts\Controllers\TorchControl.cs" />
     <Compile Include="Assets\Scripts\Managers\Boosters\BoosterController.cs" />
     <Compile Include="Assets\Scripts\Managers\BoosterSettings.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />

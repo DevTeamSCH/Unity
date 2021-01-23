@@ -18,20 +18,24 @@ public class CameraControl : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.C))
         {
-            if (cameraState == CameraState.FPS && tpsCamera != null)
+            if(fpsCamera!=null && tpsCamera!=null)
             {
-                fpsCamera.SetActive(false);
-                tpsCamera.SetActive(true);
-                cameraState = CameraState.TPS;
-                
-            }
-            else if (fpsCamera != null)
-            {
-                fpsCamera.SetActive(true);
-                tpsCamera.SetActive(false);
-                cameraState = CameraState.FPS;
+                if (cameraState == CameraState.FPS)
+                {
+                    fpsCamera.SetActive(false);
+                    tpsCamera.SetActive(true);
+                    cameraState = CameraState.TPS;
 
+                }
+                else 
+                {
+                    fpsCamera.SetActive(true);
+                    tpsCamera.SetActive(false);
+                    cameraState = CameraState.FPS;
+
+                }
             }
+           
         }
     }
 }

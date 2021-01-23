@@ -7,10 +7,12 @@ namespace Managers{
         internal List<Booster> delete = new List<Booster>();
         private readonly HealthController _hpcontrolController;
         private readonly JeremyController _jeremyController;
+        private readonly TorchControl _torchController;
 
         public BoosterSettings(GameManager gameManager){
             _hpcontrolController = gameManager.player.GetComponent<HealthController>();
             _jeremyController = gameManager.player.GetComponent<JeremyController>();
+            _torchController = _jeremyController.GetComponentInChildren<TorchControl>();
         }
 		
         public void Boost(Booster boost){
@@ -22,6 +24,10 @@ namespace Managers{
                 case "Jmp":
                     _jeremyController.AppyJmpBooster(boost.value);
                     break;
+                case "Bttr":
+                    _torchController.Recharge(); 
+                    break;
+                default: break;
             }
         }
 
@@ -33,6 +39,7 @@ namespace Managers{
                 case "Jmp":
                     _jeremyController.DenyJmpBooster(boost.value);
                     break;
+                default: break;
             }
 
             appliedBoosters.Remove(boost);
