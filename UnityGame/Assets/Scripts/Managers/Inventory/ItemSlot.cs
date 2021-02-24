@@ -11,26 +11,26 @@ namespace Managers.Inventory {
 		private ItemSlot _thisSlot;
 		private int _slotId;
 
+		public int SlotId {
+			set => _slotId = value;
+		}
+
 		private void Awake() {
 			_storedItem = null;
 			_image = GetComponent<Image>();
 			_thisSlot = GetComponent<ItemSlot>();
 		}
 
-		public void SetId(int id) {
-			_slotId = id;
-		}
-
 		public Item Item {
 			get => _storedItem;
 			set {
-				_storedItem = value;
-				value.Slot = _slotId;
+				_storedItem =  value;
 				_image.sprite = value.img;
 				_empty = false;
+				value.SlotId = _slotId;
 			}
 		}
-		
+
 		public void RemoveContent() {
 			_image.sprite = GameManager._instance.originalSlot;
 			_storedItem = null;
@@ -39,10 +39,10 @@ namespace Managers.Inventory {
 
 		public void OnClick() {
 			Item tmp = GameManager._instance.iE.TmpClicked;
-			Debug.Log(this.transform.parent.name+" - " +tmp);
 			if (_empty) {
 				if (tmp != null) {
 					Item = tmp;
+					tmp.SlotId = _slotId;
 					GameManager._instance.iE.Reset();
 				}
 			} else {
@@ -54,10 +54,6 @@ namespace Managers.Inventory {
 					GameManager._instance.iE.Swap(_thisSlot);
 				}
 			}
-		}
-
-		public bool IsEmpty() {
-			return _empty;
 		}
 	}
 }

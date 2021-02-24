@@ -14,15 +14,13 @@ namespace Managers.Inventory {
         private ContainerInventoryController _tmpContainer;
 
         protected override void Start() {
+            base.Start();
             _containerOpen = false;
             viewSystem.gameObject.SetActive(true);
             _jeremy = GetComponent<JeremyController>();
             _look = GetComponentInChildren<LookControl>();
-        
             _next = CursorLockMode.None;
             Cursor.visible = false;
-        
-            inventory.Init();
         }
 
         public override void SwitchState() {
@@ -64,12 +62,14 @@ namespace Managers.Inventory {
                         SwitchState();
                         _containerOpen = false;
                         _tmpContainer.SwitchState();
+                        _tmpContainer = null;
                     }
                 }
             } else if (Input.GetKeyDown("i")){
                 if (_containerOpen){
                     _containerOpen = false;
                     _tmpContainer.SwitchState();
+                    _tmpContainer = null;
                 }
                 SwitchState();
             }

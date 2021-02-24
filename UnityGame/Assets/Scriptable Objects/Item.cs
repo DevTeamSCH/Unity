@@ -7,11 +7,6 @@ namespace Scriptable_Objects {
 		public Sprite img;
 		public float pickUpDistane = 5.0f;
 		public String itemName;
-
-		public int Slot { get; set; }
-
-		public static int Compare(Item i1, Item i2){
-			return i1.Slot.CompareTo(i2.Slot);
-		}
+		public int SlotId { get; set; }
 	}
 }

@@ -3,10 +3,11 @@
 namespace Managers.Inventory {
     public abstract class InventoryController : MonoBehaviour
     {
-        public Scriptable_Objects.Inventory inventory;
+        public Inventory inventory;
+        public GameObject ui;
     
         protected virtual void Start() {
-            inventory.Init();
+            inventory = new Inventory(ui);
         }
 
         public virtual void SwitchState() {
