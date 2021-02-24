@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class ContainerInventoryController : InventoryController {
-	public float openDistance = 5f;
-	public string name = "Container";
+﻿namespace Managers.Inventory {
+	public class ContainerInventoryController : InventoryController {
+		public float openDistance = 5f;
+		public string name = "Container";
 	
-	public override void FixedUpdate() {
+		public override void FixedUpdate() {
 		
+		}
 	}
 }

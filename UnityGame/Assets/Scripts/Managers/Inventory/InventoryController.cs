@@ -1,20 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Net.Http.Headers;
-using Managers;
-using UnityEngine;
+﻿using UnityEngine;
 
-public abstract class InventoryController : MonoBehaviour
-{
-    public Inventory inventory;
+namespace Managers.Inventory {
+    public abstract class InventoryController : MonoBehaviour
+    {
+        public Scriptable_Objects.Inventory inventory;
     
-    protected virtual void Start() {
-        inventory.Init();
-    }
+        protected virtual void Start() {
+            inventory.Init();
+        }
 
-    public virtual void SwitchState() {
-        inventory.SwitchState();
-    }
+        public virtual void SwitchState() {
+            inventory.SwitchState();
+        }
 
-    public abstract void FixedUpdate();
+        public abstract void FixedUpdate();
+    }
 }
