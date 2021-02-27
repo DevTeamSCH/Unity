@@ -1,4 +1,5 @@
-﻿using Scriptable_Objects;
+﻿using System.Collections.Generic;
+using Scriptable_Objects;
 using UnityEngine;
 
 namespace Managers.Inventory {

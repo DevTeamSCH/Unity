@@ -50,7 +50,7 @@ namespace Managers.Inventory {
                                 .PickItUp(GameManager._instance.viewSystem.GetDistanece(), ref tmpItem))
                                 inventory.Store(ref tmpItem);
                         }
-                    } else if (!hit.Equals(null) && hit.collider.tag.Equals("Container")){
+                    } else if (!hit.Equals(null) && hit.collider.tag.Equals("Container") && !_containerOpen){
                         if (GameManager._instance.viewSystem.GetDistanece() <=
                             GameManager._instance.viewSystem.GetContainer().openDistance) {
                             GameManager._instance.viewSystem.GetContainer().SwitchState();

@@ -7,6 +7,7 @@ namespace Scriptable_Objects {
 		public Sprite img;
 		public float pickUpDistane = 5.0f;
 		public String itemName;
+		public bool stackable = false;
 		public int SlotId { get; set; }
 	}
 }
