@@ -62,7 +62,7 @@ public class PlayerGunControl : MonoBehaviour
        // if (Physics.Raycast(fpsCam.transform.position+ fpsCam.transform.forward*0.1f, fpsCam.transform.forward, out hit, range))
         if (hit.transform!=null && GameManager._instance.viewSystem.GetDistanece()<=range)
         {
-            Debug.Log("poof " + GameManager._instance.viewSystem.GetDistanece());
+            //Debug.Log("poof " + GameManager._instance.viewSystem.GetDistanece());
             HealthController hc = hit.transform.GetComponent<HealthController>();
             if (hc != null)
             {

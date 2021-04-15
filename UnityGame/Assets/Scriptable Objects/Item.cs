@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Dynamic;
 using UnityEngine;
 
 namespace Scriptable_Objects {
@@ -7,7 +8,21 @@ namespace Scriptable_Objects {
 		public Sprite img;
 		public float pickUpDistane = 5.0f;
 		public String itemName;
-		public bool stackable = false;
+
+		public void Clone(Item other) {
+			img = other.img;
+			pickUpDistane = other.pickUpDistane;
+			itemName = other.itemName;
+		}
+
 		public int SlotId { get; set; }
+
+		public virtual string getStack() {
+			return "";
+		}
+
+		public virtual bool isStackable() {
+			return false;
+		}
 	}
 }

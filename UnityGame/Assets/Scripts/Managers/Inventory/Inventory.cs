@@ -41,25 +41,24 @@ namespace Managers.Inventory {
 			_ui.SetActive(!_ui.activeSelf);
 		}
 
-		private int LowestEmptyIndex {
-			get {
-				if (!IsFull()){
-					int ret = 0;
-					bool empty;
-					do {
-						empty = true;
-						foreach (var item in _items) {
-							if (ret == item.SlotId) {
-								empty = false;
-								++ret;
-							}
+		public int getLowestEmptyIndex() {
+			if (!IsFull()) {
+				int ret = 0;
+				bool empty;
+				do {
+					empty = true;
+					foreach (var item in _items) {
+						if (ret == item.SlotId) {
+							empty = false;
+							++ret;
 						}
-					} while (!empty);
+					}
+				} while (!empty);
 
-					return ret;
-				}
-				return -1;
+				return ret;
 			}
+
+			return -1;
 		}
 
 		public void ClearUi() {
@@ -81,10 +80,37 @@ namespace Managers.Inventory {
 			}
 		}
 
-		public void Store(ref Item item) {
+		public void Store(Item item) {
+			Item store = ScriptableObject.CreateInstance<Item>();
+			store.Clone(item);
 			if (!IsFull()){
-				item.SlotId = LowestEmptyIndex;
-				_items.Add(item);
+				if (!item.isStackable()) {
+					store.SlotId = getLowestEmptyIndex();
+					_items.Add(store);
+				} else {
+					StoreStackable(item);
+				}
+			}
+		}
+
+		public void StoreStackable(Item item) {
+			StackableItem store = ScriptableObject.CreateInstance<StackableItem>();
+			store.Clone(item);
+			StackableItem stored = null;
+			foreach (var it in _items) {
+				if (it.itemName.Equals(store.itemName)) {
+					stored = (StackableItem) it;
+					break;
+				}
+			}
+
+			if (!(stored is null)) {
+				stored._num++;
+			} else {
+				if (!IsFull()) {
+					store.SlotId = getLowestEmptyIndex();
+					_items.Add(store);
+				}
 			}
 		}
 	}

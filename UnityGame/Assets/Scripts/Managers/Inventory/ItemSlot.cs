@@ -11,10 +11,13 @@ namespace Managers.Inventory {
 		private Item _storedItem;
 		private ItemSlot _thisSlot;
 		private int _slotId;
+		public Text text;
 
 		public int SlotId {
 			set => _slotId = value;
 		}
+		
+		public string Stack { get; set; }
 
 		private void Awake() {
 			_storedItem = null;
@@ -29,6 +32,7 @@ namespace Managers.Inventory {
 				_image.sprite = value.img;
 				_empty = false;
 				value.SlotId = _slotId;
+				text.text = value.getStack();
 			}
 		}
 
@@ -36,6 +40,7 @@ namespace Managers.Inventory {
 			_image.sprite = GameManager._instance.originalSlot;
 			_storedItem = null;
 			_empty = true;
+			text.text = "";
 		}
 
 		public void OnClick() {

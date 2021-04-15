@@ -62,6 +62,7 @@
      <Compile Include="Assets\Models\Characters\Jelly Fish Loli\Scripts\Move.cs" />
      <Compile Include="Assets\Scriptable Objects\Booster.cs" />
      <Compile Include="Assets\Scriptable Objects\Item.cs" />
+     <Compile Include="Assets\Scriptable Objects\StackableItem.cs" />
      <Compile Include="Assets\Scripts\Controllers\HealthController.cs" />
      <Compile Include="Assets\Scripts\Controllers\JeremyController.cs" />
      <Compile Include="Assets\Scripts\Controllers\LookControl.cs" />

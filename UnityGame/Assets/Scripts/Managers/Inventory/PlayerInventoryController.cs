@@ -48,7 +48,7 @@ namespace Managers.Inventory {
                             Item tmpItem = null;
                             if (GameManager._instance.viewSystem.GetPickUp()
                                 .PickItUp(GameManager._instance.viewSystem.GetDistanece(), ref tmpItem))
-                                inventory.Store(ref tmpItem);
+                                inventory.Store(tmpItem);
                         }
                     } else if (!hit.Equals(null) && hit.collider.tag.Equals("Container") && !_containerOpen){
                         if (GameManager._instance.viewSystem.GetDistanece() <=
