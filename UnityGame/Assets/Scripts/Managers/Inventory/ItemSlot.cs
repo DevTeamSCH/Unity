@@ -1,65 +1,84 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using Managers;
+using RL.Managers;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Button))]
-public class ItemSlot : MonoBehaviour {
-	private bool _empty = true;
-	private Image _image;
-	private Item _storedItem;
-	private ItemSlot _thisSlot;
-	private int _slotId;
+namespace RL.Managers
+{
+	[RequireComponent(typeof(Button))]
 
-	private void Awake() {
-		_storedItem = null;
-		_image = GetComponent<Image>();
-		_thisSlot = GetComponent<ItemSlot>();
-	}
+	public class ItemSlot : MonoBehaviour
+	{
+		private bool _empty = true;
+		private Image _image;
+		private Item _storedItem;
+		private ItemSlot _thisSlot;
+		private int _slotId;
 
-	public void SetId(int id) {
-		_slotId = id;
-	}
+		private void Awake()
+		{
+			_storedItem = null;
+			_image = GetComponent<Image>();
+			_thisSlot = GetComponent<ItemSlot>();
+		}
 
-	public void SetItem(Item item) {
-		_storedItem = item;
-		item.SetSlot(_slotId);
-		_image.sprite = item.img;
-		_empty = false;
-	}
+		public void SetId(int id)
+		{
+			_slotId = id;
+		}
 
-	public Item GetItem() {
-		return _storedItem;
-	}
+		public void SetItem(Item item)
+		{
+			_storedItem = item;
+			item.SetSlot(_slotId);
+			_image.sprite = item.img;
+			_empty = false;
+		}
 
-	public void RemoveContent() {
-		_image.sprite = GameManager._instance.originalSlot;
-		_storedItem = null;
-		_empty = true;
-	}
+		public Item GetItem()
+		{
+			return _storedItem;
+		}
 
-	public void OnClick() {
-		Item tmp = GameManager._instance.iE.GetTmpClicked();
-		Debug.Log(this.transform.parent.name+" - " +tmp);
-		if (_empty) {
-			if (tmp != null) {
-				SetItem(tmp);
-				GameManager._instance.iE.Reset();
+		public void RemoveContent()
+		{
+			_image.sprite = GameManager._instance.originalSlot;
+			_storedItem = null;
+			_empty = true;
+		}
+
+		public void OnClick()
+		{
+			Item tmp = GameManager._instance.iE.GetTmpClicked();
+			Debug.Log(this.transform.parent.name + " - " + tmp);
+			if (_empty)
+			{
+				if (tmp != null)
+				{
+					SetItem(tmp);
+					GameManager._instance.iE.Reset();
+				}
 			}
-		} else {
-			if (tmp == null) {
-				GameManager._instance.iE.SetTmpClicked(_storedItem);
-				GameManager._instance.iE.SetTmpSlot(_thisSlot);
-				RemoveContent();
-			} else {
-				GameManager._instance.iE.Swap(_thisSlot);
+			else
+			{
+				if (tmp == null)
+				{
+					GameManager._instance.iE.SetTmpClicked(_storedItem);
+					GameManager._instance.iE.SetTmpSlot(_thisSlot);
+					RemoveContent();
+				}
+				else
+				{
+					GameManager._instance.iE.Swap(_thisSlot);
+				}
 			}
 		}
-	}
 
-	public bool IsEmpty() {
-		return _empty;
+		public bool IsEmpty()
+		{
+			return _empty;
+		}
 	}
 }

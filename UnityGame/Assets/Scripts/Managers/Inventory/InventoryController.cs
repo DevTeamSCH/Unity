@@ -1,20 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
-using Managers;
+using RL.Managers;
 using UnityEngine;
 
-public abstract class InventoryController : MonoBehaviour
+namespace RL.Managers
 {
-    public Inventory inventory;
-    
-    protected virtual void Start() {
-        inventory.Init();
-    }
+    public abstract class InventoryController : MonoBehaviour
+    {
+        public Inventory inventory;
 
-    public virtual void SwitchState() {
-        inventory.SwitchState();
-    }
+        protected virtual void Start()
+        {
+            inventory.Init();
+        }
 
-    public abstract void FixedUpdate();
+        public virtual void SwitchState()
+        {
+            inventory.SwitchState();
+        }
+
+        public abstract void FixedUpdate();
+    }
 }

@@ -4,27 +4,30 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WeaponUI : MonoBehaviour
+namespace RL.UI
 {
-    public Image[] weaponPanels;
-    public TextMeshProUGUI ammoText;
-    int activeidx = 0;
-    // Start is called before the first frame update
-    public void ChooseWeapon(int idx)
+    public class WeaponUI : MonoBehaviour
     {
-        Color tmp = weaponPanels[activeidx].color;
-        tmp.a = 0.5f;
-        weaponPanels[activeidx].color = tmp;
+        public Image[] weaponPanels;
+        public TextMeshProUGUI ammoText;
+        int activeidx = 0;
+        // Start is called before the first frame update
+        public void ChooseWeapon(int idx)
+        {
+            Color tmp = weaponPanels[activeidx].color;
+            tmp.a = 0.5f;
+            weaponPanels[activeidx].color = tmp;
 
-        tmp = weaponPanels[idx].color;
-        tmp.a = 1f;
-        weaponPanels[idx].color = tmp;
+            tmp = weaponPanels[idx].color;
+            tmp.a = 1f;
+            weaponPanels[idx].color = tmp;
 
-        activeidx = idx;
-    }
+            activeidx = idx;
+        }
 
-    public void UpdateAmmo(int current, int max)
-    {
-        ammoText.SetText(current + "/" + max);
+        public void UpdateAmmo(int current, int max)
+        {
+            ammoText.SetText(current + "/" + max);
+        }
     }
 }

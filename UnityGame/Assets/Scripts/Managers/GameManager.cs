@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Managers{
+namespace RL.Managers{
 	public class GameManager : MonoBehaviour{
 		public static GameManager _instance;
 		public GameObject player;

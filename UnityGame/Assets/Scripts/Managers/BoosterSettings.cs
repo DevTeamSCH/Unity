@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using RL.Player;
+using System.Collections.Generic;
 using UnityEngine;
 
-namespace Managers{
+namespace RL.Managers{
     public class BoosterSettings{
         internal List<Booster> appliedBoosters = new List<Booster>();
         internal List<Booster> delete = new List<Booster>();

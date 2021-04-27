@@ -1,52 +1,62 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public class TorchControl : MonoBehaviour
+namespace RL.Player
 {
-    bool isOn = false;
-    int charge;
-    int maxcharge = 100;
-    public GameObject lightSource;
-    // Start is called before the first frame update
-    void Start()
-    {
-        charge = maxcharge;
-    }
 
-    // Update is called once per frame
-    void Update()
+    public class TorchControl : MonoBehaviour
     {
-     if(Input.GetKeyDown(KeyCode.F))
+        bool isOn = true;
+        int charge;
+        int maxcharge = 100;
+        public GameObject lightSource;
+        SanityController sanityController;
+        public TextMeshProUGUI batteryText;
+        // Start is called before the first frame update
+        void Start()
         {
-            Switch();
+            charge = maxcharge;
+            sanityController = GetComponent<SanityController>();
         }
-    }
 
-    public void Switch()
-    {
-        if(charge>0)
+        // Update is called once per frame
+        void Update()
         {
-            isOn = !isOn;
-            if (isOn)
+            if (Input.GetKeyDown(KeyCode.F))
             {
-                StartCoroutine(UseBattery());
+                Switch();
             }
-            lightSource.SetActive(isOn);
-        }       
-    }
+        }
 
-    public void Recharge()
-    {
-        charge = maxcharge;
-    }
-    IEnumerator UseBattery()
-    {
-        while(isOn)
+        public void Switch()
         {
-            yield return new WaitForSeconds(5);
-            charge--;
-            if (charge <= 0) Switch();
+            if (charge > 0)
+            {
+                isOn = !isOn;
+                sanityController.TorchOn = isOn;
+                if (isOn)
+                {
+                    StartCoroutine(UseBattery());
+                }
+                lightSource.SetActive(isOn);
+            }
+        }
+
+        public void Recharge()
+        {
+            charge = maxcharge;
+        }
+        IEnumerator UseBattery()
+        {
+            while (isOn)
+            {
+                yield return new WaitForSeconds(5);
+                charge--;
+                batteryText.text = charge.ToString() + "/" + maxcharge.ToString();
+                if (charge <= 0) Switch();
+            }
         }
     }
 }

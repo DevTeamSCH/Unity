@@ -47,7 +47,7 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Unity/VSTU</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>4.8.2.0</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>4.9.1.0</UnityProjectGeneratorVersion>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2019.2.10f1</UnityVersion>
@@ -71,15 +71,17 @@
     <Compile Include="Assets\Scriptable Objects\Booster.cs" />
     <Compile Include="Assets\Scriptable Objects\Inventory.cs" />
     <Compile Include="Assets\Scriptable Objects\Item.cs" />
-    <Compile Include="Assets\Scripts\Controllers\HealthController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\AreaDamageDealer.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Combat\Bullet.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Combat\CameraControl.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Combat\GunControl.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Combat\PlayerGunControl.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Combat\WeaponSwitcher.cs" />
     <Compile Include="Assets\Scripts\Controllers\JeremyController.cs" />
     <Compile Include="Assets\Scripts\Controllers\LookControl.cs" />
     <Compile Include="Assets\Scripts\Controllers\PatrolControl.cs" />
-    <Compile Include="Assets\Scripts\Controllers\Shooting\Bullet.cs" />
-    <Compile Include="Assets\Scripts\Controllers\Shooting\CameraControl.cs" />
-    <Compile Include="Assets\Scripts\Controllers\Shooting\GunControl.cs" />
-    <Compile Include="Assets\Scripts\Controllers\Shooting\PlayerGunControl.cs" />
-    <Compile Include="Assets\Scripts\Controllers\Shooting\WeaponSwitcher.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Stats\HealthController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Stats\SanityController.cs" />
     <Compile Include="Assets\Scripts\Controllers\TorchControl.cs" />
     <Compile Include="Assets\Scripts\Managers\Boosters\BoosterController.cs" />
     <Compile Include="Assets\Scripts\Managers\BoosterSettings.cs" />

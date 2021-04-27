@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using Managers;
+using RL.Managers;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "inventory", menuName = "ScriptableObjects/newInventory", order = 3)]

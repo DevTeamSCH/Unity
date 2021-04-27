@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Experimental.PlayerLoop;
 using Object = UnityEngine.Object;
 
-namespace Managers{
+namespace RL.Managers{
 	public class ViewSystem {
 		private GameManager _gameManager = GameManager._instance;
 		private Ray _ray;
