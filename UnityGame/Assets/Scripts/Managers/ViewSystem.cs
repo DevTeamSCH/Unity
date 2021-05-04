@@ -5,7 +5,6 @@ using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Managers.Inventory;
 using UnityEngine;
-using UnityEngine.Experimental.PlayerLoop;
 using Object = UnityEngine.Object;
 
 namespace Managers{
